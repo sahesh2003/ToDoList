@@ -33,7 +33,7 @@ form {
 
 form input {
   padding: 12px;
-  width: 450px;
+  width: 50%;
   border: 2px solid #4a4a8e;
   border-radius: 6px;
   font-size: 16px;
@@ -71,7 +71,7 @@ li {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 700px;
   margin: 10px auto;
 }
 
@@ -83,7 +83,7 @@ li input[type="checkbox"] {
 }
 
 li p {
-  width: 400px;
+  width: 100%;
   text-align: left;
   color: #333;
   font-size: 16px;
