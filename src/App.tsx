@@ -6,6 +6,8 @@ import ToDoList from "./components/ToDoList";
 
 function App() {
     const [todos, setTodos] = useState<Todo[]>([]);
+    const [showCompleted, setShowCompleted] = useState(false)
+    const [isNightMode, setIsNightMode] = useState(false);
 
     const addTodo = (text: string) => {
         const newTodo: Todo = {
@@ -28,14 +30,29 @@ function App() {
         setTodos(todos.filter((todo) => todo.id !== id));
     };
 
+    const filteredTodos = showCompleted ? (todos.filter(todo => todo.completed)) : todos;
+
+    const editTodo = (id: number, newText: string) => {
+        setTodos(
+            todos.map((todo) => todo.id === id ? {...todo, text: newText} : todo)
+        )
+    }
   return (
-    <div className="App">
-      <h1>
-        To Do App
-      </h1>
-        <ToDoForm addToDo={addTodo} />
-        <ToDoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo}/>
-    </div>
+      <div className="App">
+          <button onClick={() => setIsNightMode(!isNightMode)} className={"nightModeButton"}>
+              {isNightMode ? "Light Mode" : "Night Mode"}
+          </button>
+          <h1>
+              To Do App
+          </h1>
+          <ToDoForm addToDo={addTodo}/>
+          <button onClick={() => setShowCompleted(!showCompleted)} className={"completedTasksButton"}>
+              {
+                  showCompleted ? "Show All Tasks" : "Show Completed Tasks"
+              }
+          </button>
+          <ToDoList todos={filteredTodos} toggleTodo={toggleTodo} removeTodo={removeTodo} editTodo={editTodo}/>
+      </div>
   );
 }
 

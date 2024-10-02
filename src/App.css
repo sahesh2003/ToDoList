@@ -97,7 +97,7 @@ li p.completed {
 }
 
 li button {
-  margin-left: auto;
+  margin-left: 10px;
   padding: 8px 12px;
   background-color: #f04a4a;
   color: white;
@@ -109,4 +109,35 @@ li button {
 
 li button:hover {
   background-color: #d93f3f;
+}
+
+.completedTasksButton{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #4a4a8e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+.completedTasksButton:hover{
+    background-color: #373785;
+  }
+.editTextInput{
+  width: 100%;
+  padding: 7px;
+}
+.nightModeButton{
+  padding: 12px;
+  margin-left: 10px;
+  border: none;
+  background-color: #4a4a8e;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
 }
