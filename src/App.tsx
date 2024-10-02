@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import ToDoForm from "./components/ToDoForm";
 import {Todo} from "./types/todo";
 import ToDoList from "./components/ToDoList";
+import {useTheme} from "./ThemeContext";
 
 function App() {
     const [todos, setTodos] = useState<Todo[]>([]);
     const [showCompleted, setShowCompleted] = useState(false)
-    const [isNightMode, setIsNightMode] = useState(false);
+
+    const { isNightMode, toggleNightMode } = useTheme();
 
     const addTodo = (text: string) => {
         const newTodo: Todo = {
@@ -38,20 +40,23 @@ function App() {
         )
     }
   return (
-      <div className="App">
-          <button onClick={() => setIsNightMode(!isNightMode)} className={"nightModeButton"}>
+      <div className={`App ${isNightMode ? "night-mode" : ""}`}>
+          <button onClick={toggleNightMode} className={"nightModeButton"}>
               {isNightMode ? "Light Mode" : "Night Mode"}
           </button>
           <h1>
               To Do App
           </h1>
-          <ToDoForm addToDo={addTodo}/>
-          <button onClick={() => setShowCompleted(!showCompleted)} className={"completedTasksButton"}>
-              {
-                  showCompleted ? "Show All Tasks" : "Show Completed Tasks"
-              }
-          </button>
-          <ToDoList todos={filteredTodos} toggleTodo={toggleTodo} removeTodo={removeTodo} editTodo={editTodo}/>
+          <div className={"Form"}>
+              <ToDoForm addToDo={addTodo}/>
+              <button onClick={() => setShowCompleted(!showCompleted)} className={"completedTasksButton"}>
+                  {
+                      showCompleted ? "Show All Tasks" : "Show Completed Tasks"
+                  }
+              </button>
+              <ToDoList todos={filteredTodos} toggleTodo={toggleTodo} removeTodo={removeTodo} editTodo={editTodo}/>
+
+          </div>
       </div>
   );
 }
