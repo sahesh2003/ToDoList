@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import ToDoForm from "./components/ToDoForm";
 import {Todo} from "./types/todo";
 import ToDoList from "./components/ToDoList";
 import {useTheme} from "./ThemeContext";
+import moonIcon from "./assets/moon_icon.svg";
+import sunIcon from "./assets/sun_icon.svg";
 
 function App() {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -41,11 +43,31 @@ function App() {
     }
   return (
       <div className={`App ${isNightMode ? "night-mode" : ""}`}>
-          <button onClick={toggleNightMode} className={"nightModeButton"}>
-              {isNightMode ? "Light Mode" : "Night Mode"}
-          </button>
+          {/*<button onClick={toggleNightMode} className={"nightModeButton"}>*/}
+          {/*    {isNightMode ? "Light Mode" : "Night Mode"}*/}
+          {/*</button>*/}
+
+          <div className="toggle-container">
+              <input
+                  type="checkbox"
+                  id="theme-toggle"
+                  className="toggle-checkbox"
+                  checked={isNightMode}
+                  onChange={toggleNightMode}
+              />
+              <label htmlFor="theme-toggle" className="toggle-label">
+                  <span className="toggle-ball"></span>
+                  <span className="icon sun-icon">
+                      <img src={sunIcon} alt="Sun Icon" className="svg-icon"/>
+                  </span>
+                  <span className="icon moon-icon">
+                      <img src={moonIcon} alt="Moon Icon" className="svg-icon"/>
+                  </span>
+              </label>
+          </div>
+
           <h1>
-              To Do App
+          To Do App
           </h1>
           <div className={"Form"}>
               <ToDoForm addToDo={addTodo}/>

@@ -8,12 +8,14 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #f4f4f9;
   color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
   /*text-align: center;*/
   margin-top: 10px;
   font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .night-mode {
@@ -153,18 +155,6 @@ li button:hover {
   width: 100%;
   padding: 7px;
 }
-.nightModeButton{
-  padding: 12px;
-  margin-left: 10px;
-  border: none;
-  background-color: #4a4a8e;
-  color: white;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-}
 
 .night-mode input[type="text"] {
   background-color: #555;
@@ -173,4 +163,70 @@ li button:hover {
 
 .night-mode input[type="checkbox"] {
   background-color: #444;
+}
+
+.toggle-container {
+  margin-left: 20px;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+/* Label for the toggle switch */
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+/* Toggle ball (circle) */
+.toggle-ball {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: #0e0e0d; /* Sun color */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Checkbox checked state - change to night mode */
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #333;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-ball {
+  transform: translateX(30px);
+  background-color: #bbb; /* Moon color */
+}
+
+.toggle-checkbox:checked + .toggle-label .sun-icon {
+  color: #666;
+}
+
+.toggle-checkbox:checked + .toggle-label .moon-icon {
+  color: #fff;
+}
+
+.svg-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
