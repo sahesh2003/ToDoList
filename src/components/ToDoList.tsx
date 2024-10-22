@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Todo} from "../types/todo";
-import {text} from "node:stream/consumers";
 
 interface ToDoListProps {
     todos: Todo[];
